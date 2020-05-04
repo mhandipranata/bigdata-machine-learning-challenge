@@ -1,0 +1,21 @@
+.navbar-logo{
+    width:25%; 
+    height:25%;
+}
+
+.home-image {
+    height:60%;
+    width:60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-options {
+    width: 400;
+    height: 350px;
+}
+
+.white-font {
+    color: white;
+}
