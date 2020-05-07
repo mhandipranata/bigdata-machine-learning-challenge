@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 import pickle
 import joblib
+import model
 
 app = Flask(__name__)
 
@@ -23,9 +24,22 @@ def dancer_shy():
 def singer_musician():
     return render_template("singer_choice.html")
 
-@app.route('/result/<mood_genre>', methods=["GET", "POST"])
-def prediction_result(mood_genre):
+@app.route('/result', methods=["GET", "POST"])
+def prediction_result():
     spotify_df = pd.read_csv("spotify_data_v4.csv")
+
+    # Run train_model function to get all training and testing data for running ML model
+    X_train_scaled, X_test_scaled, y_train, y_test = model.train_model()
+
+    # Load the ML model
+    spotify_model = pickle.load(open("spotify_ML_model_4features.pkl","rb"))
+
+    # Run scale_input function to scale the score list
+    score_list = [] # score list we get from user input which we collected using javascript
+    score_list_scaled = scale_input(score_list)
+
+    # Predict the scaled score list using ML model (KNN), output will be genre label
+    prediction_genre_label = knn.predict(score_list_scaled)
 
     # # Extract the necessary columns we need for machine learning model
     # spotify_df_clean = spotify_df[[
@@ -51,8 +65,8 @@ def prediction_result(mood_genre):
     # model = open('spotify_ML_model.pkl','rb')
     # spotify_model = joblib.load(model)
 
-    spotify_df_filtered = spotify_df[spotify_df["genre"] == mood_genre]
-    return jsonify(spotify_df_filtered.to_dict(orient="records"))
+    # spotify_df_filtered = spotify_df[spotify_df["genre"] == mood_genre]
+    # return jsonify(spotify_df_filtered.to_dict(orient="records"))
 
 if __name__ == '__main__':
     app.run(debug=True)
