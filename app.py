@@ -19,14 +19,9 @@ def chilin_excited():
 def dancer_shy():
     return render_template("dancer_choice.html")
 
-# @app.route('/chilin')
-# def chilin():
-#     return 
-
-# @app.route('/excited')
-# def chilin():
-#     return 
-
+@app.route('/singer_choice', methods = ['POST', 'GET'])
+def singer_musician():
+    return render_template("singer_choice.html")
 
 @app.route('/result/<mood_genre>', methods=["GET", "POST"])
 def prediction_result(mood_genre):
