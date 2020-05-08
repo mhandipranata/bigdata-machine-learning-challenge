@@ -75,12 +75,6 @@ musicianButton.on("click", function() {
         $(location).attr('href','http://127.0.0.1:5000/result');
     })
 
-    // $.getJSON($SCRIPT_ROOT + "/singer_choice", {
-    //     scoreListPassing: JSON.stringify(scoreList)
-    // }, function(data) {
-    //     console.log(data)
-    // });
-    // console.log(scoreListPassing)
 });
 
 singerButton.on("click", function() {
@@ -105,23 +99,6 @@ singerButton.on("click", function() {
         $(location).attr('href','http://127.0.0.1:5000/result');
     })
 
-    // .done(function() {
-    //     console.log("POST successful")
-    // })
-    // d3.json('/result', {
-    //     method:"POST",
-    //     body: payload,
-    //     headers: {
-    //       "Content-type": "application/json; charset=UTF-8"
-    //     }
-    // });
-
-    // $.getJSON($SCRIPT_ROOT + "/singer_choice", {
-    //     scoreListPassing: JSON.stringify(scoreList)
-    // }, function(data) {
-    //     console.log(data)
-    // });
-    // console.log(scoreListPassing)
 });
 
 

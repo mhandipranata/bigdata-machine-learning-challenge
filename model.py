@@ -31,20 +31,6 @@ def train_model():
     X_train_scaled = X_scaler.transform(X_train)
     X_test_scaled = X_scaler.transform(X_test)
 
-    # Train KNN model
-    # knn = KNeighborsClassifier()
-    # knn.fit(X_train_scaled, y_train)
-
-    # Saving model to disk
-    # pickle.dump(knn, open('model.pkl','wb'))
-
-    # # Load the ML model
-        # model = open('spotify_ML_model.pkl','rb')
-        # spotify_model = joblib.load(model)
-
-    # Loading model to compare the results
-    # model = pickle.load(open('model.pkl','rb'))
-
     return X_train_scaled, X_test_scaled, y_train, y_test
 
 def scale_input(score_list):
