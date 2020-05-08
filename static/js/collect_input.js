@@ -61,6 +61,15 @@ musicianButton.on("click", function() {
     console.log(scoreList)
     sessionStorage.setItem("scoreList3", JSON.stringify(scoreList));
 
+    var payload = {
+        "scoreList": scoreList
+    };
+
+    $.post("/result", JSON.stringify(payload))
+    .done(function() {
+        console.log("POST successful")
+    })
+
     // $.getJSON($SCRIPT_ROOT + "/singer_choice", {
     //     scoreListPassing: JSON.stringify(scoreList)
     // }, function(data) {
@@ -77,6 +86,33 @@ singerButton.on("click", function() {
     console.log(scoreList)
     sessionStorage.setItem("scoreList3", JSON.stringify(scoreList));
 
+    var payload = {
+        "scoreList": scoreList
+    };
+    
+    $.post("/result", JSON.stringify(payload), function(response) {
+        console.log("POST Successful");
+        console.log(response)
+        
+    })
+    .done(function() {
+        console.log("Done function executed")
+        $(location).attr('href','http://127.0.0.1:5000/result');
+    })
+
+
+
+    // .done(function() {
+    //     console.log("POST successful")
+    // })
+    // d3.json('/result', {
+    //     method:"POST",
+    //     body: payload,
+    //     headers: {
+    //       "Content-type": "application/json; charset=UTF-8"
+    //     }
+    // });
+
     // $.getJSON($SCRIPT_ROOT + "/singer_choice", {
     //     scoreListPassing: JSON.stringify(scoreList)
     // }, function(data) {
@@ -84,6 +120,8 @@ singerButton.on("click", function() {
     // });
     // console.log(scoreListPassing)
 });
+
+
 
 
 
