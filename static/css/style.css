@@ -24,3 +24,11 @@
     background-color: #84bd00;
     color: white;
 }
+
+.result-image {
+    height:40%;
+    width:40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

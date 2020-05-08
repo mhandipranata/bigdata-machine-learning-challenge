@@ -59,6 +59,14 @@ musicianButton.on("click", function() {
 
     scoreList.push(instrumentalScore)
     console.log(scoreList)
+    sessionStorage.setItem("scoreList3", JSON.stringify(scoreList));
+
+    // $.getJSON($SCRIPT_ROOT + "/singer_choice", {
+    //     scoreListPassing: JSON.stringify(scoreList)
+    // }, function(data) {
+    //     console.log(data)
+    // });
+    // console.log(scoreListPassing)
 });
 
 singerButton.on("click", function() {
@@ -67,5 +75,17 @@ singerButton.on("click", function() {
 
     scoreList.push(instrumentalScore)
     console.log(scoreList)
+    sessionStorage.setItem("scoreList3", JSON.stringify(scoreList));
+
+    // $.getJSON($SCRIPT_ROOT + "/singer_choice", {
+    //     scoreListPassing: JSON.stringify(scoreList)
+    // }, function(data) {
+    //     console.log(data)
+    // });
+    // console.log(scoreListPassing)
 });
+
+
+
+
 

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+import json
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
@@ -32,15 +33,28 @@ def prediction_result():
     X_train_scaled, X_test_scaled, y_train, y_test = model.train_model()
 
     # Load the ML model
-    spotify_model = pickle.load(open("spotify_ML_model_4features.pkl","rb"))
+    spotify_model = joblib.load(open("spotify_ML_model_4features.pkl","rb"))
 
     # Run scale_input function to scale the score list
-    score_list = [] # score list we get from user input which we collected using javascript
-    score_list_scaled = scale_input(score_list)
+    score_list = json.loads(request.args.get("scoreListPassing")) # score list we get from user input which we collected using javascript
+    score_list_scaled = model.scale_input(score_list)
 
     # Predict the scaled score list using ML model (KNN), output will be genre label
-    prediction_genre_label = knn.predict(score_list_scaled)
+    prediction_genre_label = spotify_model.predict(score_list_scaled)
 
+    # Filter dataframe with genre_label = prediction_genre_label and song popularity > 50
+    spotify_df_filtered = spotify_df[(spotify_df["genre_label"] == prediction_genre_label[0]) & (spotify_df["popularity"] > 50)]
+
+    # Randomly pick 3 songs within the prediction genre
+    prediction_result_df = spotify_df_filtered.sample() 
+
+    # Get the genre, artist name, song/track name, and song/track id
+    genre_result = prediction_result_df["genre"].values[0]
+    artist_result = prediction_result_df["artist_name"].values[0]
+    track_result = prediction_result_df["track_name"].values[0]
+    track_id_result = f"https://open.spotify.com/track/{prediction_result_df['track_id'].values[0]}"
+
+    return render_template("result.html", genre_result=genre_result, artist_result=artist_result, track_result=track_result, track_id_result=track_id_result)
     # # Extract the necessary columns we need for machine learning model
     # spotify_df_clean = spotify_df[[
     #     'genre', 'genre_label', 'danceability', 'energy', 'acousticness',  
