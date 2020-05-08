@@ -72,7 +72,7 @@ musicianButton.on("click", function() {
     })
     .done(function() {
         console.log("Done function executed")
-        $(location).attr('href','http://127.0.0.1:5000/result');
+        $(location).attr('href','/result');
     })
 
 });
@@ -96,7 +96,7 @@ singerButton.on("click", function() {
     })
     .done(function() {
         console.log("Done function executed")
-        $(location).attr('href','http://127.0.0.1:5000/result');
+        $(location).attr('href','/result');
     })
 
 });
