@@ -65,9 +65,14 @@ musicianButton.on("click", function() {
         "scoreList": scoreList
     };
 
-    $.post("/result", JSON.stringify(payload))
+    $.post("/result", JSON.stringify(payload), function(response) {
+        console.log("POST Successful");
+        console.log(response)
+        
+    })
     .done(function() {
-        console.log("POST successful")
+        console.log("Done function executed")
+        $(location).attr('href','http://127.0.0.1:5000/result');
     })
 
     // $.getJSON($SCRIPT_ROOT + "/singer_choice", {
@@ -89,7 +94,7 @@ singerButton.on("click", function() {
     var payload = {
         "scoreList": scoreList
     };
-    
+
     $.post("/result", JSON.stringify(payload), function(response) {
         console.log("POST Successful");
         console.log(response)
@@ -99,8 +104,6 @@ singerButton.on("click", function() {
         console.log("Done function executed")
         $(location).attr('href','http://127.0.0.1:5000/result');
     })
-
-
 
     // .done(function() {
     //     console.log("POST successful")

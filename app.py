@@ -27,10 +27,6 @@ def dancer_shy():
 def singer_musician():
     return render_template("singer_choice.html")
 
-# @app.route('/result', methods=["POST"])
-# def prediction_result_post():
-    
-
 @app.route('/result', methods=["GET", "POST"])
 def prediction_result():
     if request.method == "POST":
