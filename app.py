@@ -38,8 +38,6 @@ def prediction_result():
         return "score_list saved"
 
     if request.method == "GET":
-        print('Result Get Works!')
-        
         spotify_df = pd.read_csv("spotify_data_v4.csv")
 
         # Run train_model function to get all training and testing data for running ML model
@@ -49,7 +47,6 @@ def prediction_result():
         spotify_model = joblib.load(open("spotify_ML_model_4features.pkl","rb"))
 
         # Run scale_input function to scale the score list
-        # score_list = json.loads(request.args.get("scoreListPassing")) # score list we get from user input which we collected using javascript
         score_list_scaled = model.scale_input(score_list)
 
         # Predict the scaled score list using ML model (KNN), output will be genre label
