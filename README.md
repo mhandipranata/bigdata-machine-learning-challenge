@@ -6,8 +6,11 @@ Spotify has python library called 'Spotipy' where we can use to extract songs/tr
 ## Idea Overview
 
 Using user interaction, we will ask a few questions to the user to receive their interests on what kind of songs they want to listen to. From the data we extracted from Spotify API, we train the model using machine learning and model will then predict the songs and give song recommendation to the user that he/she might be interested in.
-<br><br>
 
+<b>Tools: </b> spotipy, pandas, json, matplotlib, sklearn, joblib, flask, javascript(D3, sessionStorage, jQuery)
+
+<b>Result Website link: </b> https://spotify-woof.herokuapp.com/
+<br><br>
 <b> Steps: </b>
 1. Extract Songs/Tracks Data from Spotify API (Spotipy) by Genres
 2. Clean The Collected Data and Consolidate All Different Genres CSVs into One CSV
@@ -87,8 +90,6 @@ Using the following tools in JavaScript we collect the data of user's choices an
 ### 6. Build Website for User Interaction
 
 Using Bootstrap, we build each website pages from home page, pages that guide the user with the question and options to choose, and the result page to show the recommended song for the user.
-
-Website link: https://spotify-woof.herokuapp.com/
 
 ![SpotifyWoof_Homepage](screenshots/spotify_website_homepage.png)
 
